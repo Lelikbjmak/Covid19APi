@@ -1,6 +1,6 @@
 package com.innowise
 
-import controller.{ApiRoute, CountryController}
+import controller.ApiRoute
 import service.impl.{ApiServiceImpl, CovidDetailsServiceImpl}
 import service.{ApiService, CovidDetailsService}
 import util.{ApiConstant, ApplicationInitializer, PropertyUtil}
