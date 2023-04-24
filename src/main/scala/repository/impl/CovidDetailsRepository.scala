@@ -1,8 +1,7 @@
 package com.innowise
 package repository.impl
 
-import entity.{CountryCovidDetails, CovidDetailsTermStatus}
-import json.JsonSupport
+import entity.CountryCovidDetails
 import repository.RedisRepository
 import util.{ApiConstant, JedisConnectionManager}
 
@@ -11,7 +10,7 @@ import spray.json.{enrichAny, enrichString}
 
 import java.time.LocalDate
 
-class CovidDetailsRepository extends RedisRepository[CountryCovidDetails], JsonSupport {
+class CovidDetailsRepository extends RedisRepository[CountryCovidDetails] {
 
   private val connection: Jedis = JedisConnectionManager.getConnection(ApiConstant.Redis.COVID_DETAILS_DATABASE)
 

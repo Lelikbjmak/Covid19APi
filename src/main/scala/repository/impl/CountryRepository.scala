@@ -2,14 +2,13 @@ package com.innowise
 package repository.impl
 
 import entity.Country
-import json.JsonSupport
 import repository.RedisRepository
 import util.{ApiConstant, JedisConnectionManager}
 
 import redis.clients.jedis.Jedis
 import spray.json.{enrichAny, enrichString}
 
-class CountryRepository extends RedisRepository[Country], JsonSupport {
+class CountryRepository extends RedisRepository[Country] {
 
   private val connection: Jedis = JedisConnectionManager.getConnection(ApiConstant.Redis.COUNTRY_DATABASE)
 
@@ -26,7 +25,7 @@ class CountryRepository extends RedisRepository[Country], JsonSupport {
     else
       Option.apply(jsonCountry.parseJson.convertTo[Country])
   }
-  
+
   override def saveAll(entityCollection: Iterable[Country]): Iterable[Country] = {
     entityCollection.foreach(country => save(country))
     entityCollection

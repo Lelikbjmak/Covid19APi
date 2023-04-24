@@ -1,13 +1,12 @@
 package com.innowise
 package util
 
-import dto.{ CountryDto, CovidMaxMinCasesDto}
+import dto.{CountryDto, CovidMaxMinCasesDto}
 import entity.Country
-import json.JsonSupport
+import mapper.CountryMapper
 import repository.RedisRepository
 import service.ApiService
 
-import com.innowise.mapper.CountryMapper
 import org.slf4j.{Logger, LoggerFactory}
 import spray.json.*
 
@@ -15,7 +14,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.util.{Failure, Success}
 
-object ApplicationInitializer extends JsonSupport {
+object ApplicationInitializer {
 
   private val logger: Logger = LoggerFactory.getLogger(this.getClass)
 
