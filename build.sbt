@@ -8,7 +8,7 @@ resolvers += "Typesafe repository" at "https://repo.typesafe.com/typesafe/maven-
 
 val AkkaVersion = "2.8.0"
 val AkkaHttpVersion = "10.5.0"
-val slf4jVersion = "2.0.5"
+val loggerVersion = "1.4.6"
 val slickVersion = "3.5.0-M2"
 val ioJsonVersion = "1.3.6"
 val redisVersion = "4.3.1"
@@ -28,7 +28,7 @@ libraryDependencies ++= Seq( //Akka dependencies
   "com.typesafe.akka" %% "akka-http-spray-json" % AkkaHttpVersion,
   "io.spray" %% "spray-json" % ioJsonVersion)
 
-libraryDependencies += "org.slf4j" % "slf4j-simple" % slf4jVersion
+libraryDependencies += "ch.qos.logback" % "logback-classic" % loggerVersion
 
 libraryDependencies += "redis.clients" % "jedis" % redisVersion
 
