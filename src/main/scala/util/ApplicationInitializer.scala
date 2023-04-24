@@ -28,7 +28,7 @@ object ApplicationInitializer {
       case Success(countryStringList) =>
         val jsonCountryList = countryStringList.parseJson
         val countryDtoList = jsonCountryList.convertTo[List[CountryDto]]
-        CountryMapper.toEntityList(countryDtoList).map(country => countryRepository.save(country))
+        CountryMapper.mapToEntityList(countryDtoList).map(country => countryRepository.save(country))
     }
   }
 }
