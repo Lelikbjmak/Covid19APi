@@ -7,6 +7,7 @@ import util.{ApiConstant, JedisConnectionManager}
 
 import redis.clients.jedis.Jedis
 import spray.json.{enrichAny, enrichString}
+import scala.jdk.CollectionConverters._
 
 class CountryRepository extends RedisRepository[Country] {
 
@@ -29,5 +30,16 @@ class CountryRepository extends RedisRepository[Country] {
   override def saveAll(entityCollection: Iterable[Country]): Iterable[Country] = {
     entityCollection.foreach(country => save(country))
     entityCollection
+  }
+
+  def getAllCountries: List[Country] = {
+    val countryKeys = connection.keys("*")
+    val countryList = countryKeys.stream()
+      .map(key => find(key))
+      .filter(countryOption => countryOption.isDefined)
+      .map(optionCountry => optionCountry.get)
+      .toList
+    println(countryList)
+    countryList.asScala.toList
   }
 }
