@@ -1,5 +1,5 @@
 package com.innowise
-package json
+package jsonformat
 
 import spray.json.{DefaultJsonProtocol, DeserializationException, JsString, JsValue, RootJsonFormat}
 

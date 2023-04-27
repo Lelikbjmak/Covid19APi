@@ -2,8 +2,8 @@ package com.innowise
 package dto
 
 
-import json.LocalDateJsonProtocol.LocalDateJsonFormat
-import json.LocalDateTimeJsonProtocol.LocalDateTimeJsonFormat
+import jsonformat.LocalDateJsonProtocol.LocalDateJsonFormat
+import jsonformat.LocalDateTimeJsonProtocol.LocalDateTimeJsonFormat
 
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import spray.json.{DefaultJsonProtocol, JsNumber, JsObject, JsString, JsValue, JsonFormat, JsonWriter, RootJsonFormat}
@@ -15,5 +15,6 @@ case class ResponseDto[T](timestamp: LocalDateTime, code: Int, status: String, m
 object ResponseDto extends SprayJsonSupport with DefaultJsonProtocol:
   implicit def responseFormat[T: JsonFormat]: RootJsonFormat[ResponseDto[T]] =
     jsonFormat5(ResponseDto.apply[T])
+    
 end ResponseDto
 

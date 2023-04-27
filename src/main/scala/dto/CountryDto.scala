@@ -1,11 +1,24 @@
 package com.innowise
 package dto
 
-import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-import spray.json.{DefaultJsonProtocol, RootJsonFormat}
+import spray.json.{DefaultJsonProtocol, DeserializationException, JsObject, JsString, JsValue, RootJsonFormat}
 
-case class CountryDto(Country: String, Slug: String, ISO2: String)
+case class CountryDto(name: String, slug: String, code: String)
 
-object CountryDto extends SprayJsonSupport with DefaultJsonProtocol:
-  implicit val countryDtoFormat: RootJsonFormat[CountryDto] = jsonFormat3(CountryDto.apply)
+object CountryDto extends DefaultJsonProtocol:
+  implicit val format: RootJsonFormat[CountryDto] = new RootJsonFormat[CountryDto] {
+
+    def write(countryDto: CountryDto): JsValue = JsObject(
+      "name" -> JsString(countryDto.name),
+      "slug" -> JsString(countryDto.slug),
+      "code" -> JsString(countryDto.code)
+    )
+
+    def read(jsonCountryDto: JsValue): CountryDto = jsonCountryDto.asJsObject.getFields("Country", "Slug", "ISO2") match {
+      case Seq(JsString(name), JsString(slug), JsString(code)) =>
+        CountryDto(name, slug, code)
+      case _ =>
+        throw DeserializationException("Country expected")
+    }
+  }
 end CountryDto

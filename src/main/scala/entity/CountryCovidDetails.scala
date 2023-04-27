@@ -2,7 +2,7 @@ package com.innowise
 package entity
 
 import entity.Country.jsonFormat4
-import json.LocalDateJsonProtocol.LocalDateJsonFormat
+import jsonformat.LocalDateJsonProtocol.LocalDateJsonFormat
 
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
 import spray.json.{DefaultJsonProtocol, RootJsonFormat}

@@ -1,11 +1,11 @@
 package com.innowise
 package util
 
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 object CovidRequestUtil {
 
-  def generateRequest(country: String, firstDay: LocalDateTime, lastDay: LocalDateTime): String = {
+  def generateRequest(country: String, firstDay: LocalDate, lastDay: LocalDate): String = {
 
     val uriBuilder = StringBuilder(ApiConstant.ApiRequest.mainUri)
     uriBuilder.append(country)

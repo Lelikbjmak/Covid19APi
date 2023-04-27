@@ -9,7 +9,7 @@ import java.time.LocalDate
 object CovidDetailsMapper {
 
   def mapToEntity(summaryCovidDetailsDto: SummaryCovidDetailsDto): CountryCovidDetails = {
-    CountryCovidDetails(summaryCovidDetailsDto.NewConfirmed, summaryCovidDetailsDto.TotalConfirmed, summaryCovidDetailsDto.Slug, summaryCovidDetailsDto.Date.toLocalDate)
+    CountryCovidDetails(summaryCovidDetailsDto.newConfirmed, summaryCovidDetailsDto.totalConfirmed, summaryCovidDetailsDto.slug, summaryCovidDetailsDto.date.toLocalDate)
   }
 
   def mapToSummaryDto(countryCovidDetails: CountryCovidDetails): SummaryCovidDetailsDto = {
