@@ -24,7 +24,7 @@ import scala.concurrent.{Await, ExecutionContext, Future}
 
 class ApiController(covidDetailsService: CovidDetailsService, apiControllerRouteValidator: ApiControllerRouteValidator, countryRepository: CountryRepository) extends DefaultJsonProtocol {
 
-  private val logger: Logger = LoggerFactory.getLogger(this.getClass);
+  private val logger: Logger = LoggerFactory.getLogger(this.getClass)
 
   private val route: Route = pathPrefix("covid" / "countries") {
     pathEnd {
